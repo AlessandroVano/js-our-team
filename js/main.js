@@ -9,3 +9,47 @@ Inserire a inizio del file JavaScript una sezione di commento dove scrivere gli 
 
 // processi logici 
 // 1. creare un array di oggetti inserendo l'immagine, il titolo e la descrizione
+
+
+// 1
+const membri = [
+    {
+        foto: 'img/wayne-barnett-founder-ceo.jpg',
+        nome: 'Wayne Barnett',
+        ruolo: 'Founder & CEO',
+
+    },
+    {
+        foto: 'img/angela-caroll-chief-editor.jpg',
+        nome: 'Angela Carrol',
+        ruolo: 'Chef Editor',
+
+    },
+    
+    {
+        foto: 'img/walter-gordon-office-manager.jpg',
+        nome: 'Walter Gordon',
+        ruolo: 'Office Manager',
+
+    },
+    {
+        foto: 'img/angela-lopez-social-media-manager.jpg',
+        nome: 'Angela Lopez',
+        ruolo: 'Social Media Menager',
+
+    },
+    {
+        foto: 'img/scott-estrada-developer.jpg',
+        nome: 'Scott Estrada',
+        ruolo: 'Developer',
+
+    },
+    {
+        foto: 'img/barbara-ramos-graphic-designer.jpg',
+        nome: 'Barbara Ramos',
+        ruolo: 'Graphic Designer',
+
+    },
+  
+]
+ console.table(membri);
