@@ -9,9 +9,10 @@ Inserire a inizio del file JavaScript una sezione di commento dove scrivere gli 
 
 // processi logici 
 // 1. creare un array di oggetti inserendo l'immagine, il titolo e la descrizione
+// 2. richiamare la classe contenitore e creare una funzione con un ciclo for al suo interno per dirgli di creare le altre immagini con nome e ruolo e dirgli di lupparle tutte in sequenza
 
 
-// 1
+// 1.
 const membri = [
     {
         foto: 'img/wayne-barnett-founder-ceo.jpg',
@@ -49,7 +50,50 @@ const membri = [
         nome: 'Barbara Ramos',
         ruolo: 'Graphic Designer',
 
-    },
+    }
   
 ]
  console.table(membri);
+
+
+
+
+// 2. 
+
+const teamContainer = document.querySelector('.team-container');
+
+// 2. b)
+generaMembri(membri, teamContainer);
+
+
+
+
+
+
+//2. a)
+
+function generaMembri(membri, teamContainer) {
+    for(let i = 0; i < membri.length; i++) {
+        const membriItem = membri[i];
+
+    console.log(membriItem);
+    
+    
+
+    // 4 creare e aggiungere il markp dei post
+     teamContainer.innerHTML += `
+     <div class="team-card">
+            <div class="card-image">
+            <img src="
+              ${membriItem.foto}"
+              />
+            </div>
+            <div class="card-text">
+            <h3>${membriItem.nome}</h3>
+            <p>${membriItem.ruolo}</p>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    }
+}
