@@ -7,7 +7,10 @@ Inserire a inizio del file JavaScript una sezione di commento dove scrivere gli 
  */
 
 
-// processi logici 
+/******************************************
+ *             processi logici
+ * ***************************************
+ *  */  
 
 //  STAMPAGGIO CARD DEL NOSTRO TEAM
 
@@ -16,7 +19,13 @@ Inserire a inizio del file JavaScript una sezione di commento dove scrivere gli 
 
 
 //   STAMPAGGIO NUOVI UTENTI
-// 3.  A) creazione arrey nuovi membri da inserire nel bottone, creazione funzione per inserirli ad ogni click
+
+// 3.   creazione constanti per inserire i nuovi membri tramite imput e bottone (inseriamo nome, ruolo e immagine e con il click del bottone andiamo ad inserirlo)
+// 4. creiamo una funzione attraverso la quale gli diciamo di inserire appunto tutti i nostri contenuti.
+// a) evochiamo la funzione,
+// 5. inseriamo il bottone con il suo evento click, all'interno di esso ci sarà una costante che richiamerà la funzione dei nuovi membri.
+// 6. pushiamo i nostri nuovi membri all'interno dell'array di oggetti per far si generino con il click del bottone, richiamando successivamente anche l'invocazione della prima funzione, per attivare tutto ciò.
+
 
 
 
@@ -59,7 +68,7 @@ const membri = [
         nome: 'Barbara Ramos',
         ruolo: 'Graphic Designer',
 
-    }
+    },
   
 ]
  console.table(membri);
@@ -74,61 +83,39 @@ const membri = [
 const teamContainer = document.querySelector('.team-container');
 
 // 3.
-const bottone = document.getElementById('addMemberButton');
+ const bottone = document.getElementById('addMemberButton');
 const nuovoUtenteNome = document.getElementById('name');
 const nuovoUtenteRuolo = document.getElementById('role');
-const nuovoUtenteFoto = document.getElementById('image');
+const nuovoUtenteFoto = document.getElementById('image'); 
    
 
 
 
 
 // 2. b)
- generaMembri(membri, teamContainer); 
+   generaMembri(membri, teamContainer);   
 
 bottone.addEventListener('click', () => {
+   
 
+const nuoviMembri = generazioneNuoviMembri(nuovoUtenteNome,nuovoUtenteRuolo, nuovoUtenteFoto);
 
-    const nuoviMembri = [ 
-        {
-        nome: 'Michelle Obama',
-        ruolo: 'pubbliche relazioni',
-        foto:  'img/new-team-member-01.jpg',
+membri.push(nuoviMembri);
 
-    },
-    {
-        nome: 'Michelle Obama',
-        ruolo: 'pubbliche relazioni',
-        foto:  'img/new-team-member-02.jpg',
+  generaMembri(membri, teamContainer);  
 
-    },
-    {
-        nome: 'Michelle Obama',
-        ruolo: 'pubbliche relazioni',
-        foto:  'img/new-team-member-03.jpg',
-
-    },
-    {
-        nome: 'Michelle Obama',
-        ruolo: 'pubbliche relazioni',
-        foto:  'img/new-team-member-04.jpg',
-
-    }
-]
-
-     membri.push(nuoviMembri);
-     console.log(membri);
-
-     generazioneNuoviMembri(nuoviMembri, teamContainer)
      
 });
 
-
+/**********************************************************
+ *                      SEZIONE FUNZIONI
+ ********************************************************/
 
 
 //2. a)
  /* FUNZIONE STAMPAGGIO NOSTRO TEAM */
 function generaMembri(membri, teamContainer) {
+    teamContainer.innerHTML = ''; 
     for(let i = 0; i < membri.length; i++) {
         const membriItem = membri[i];
 
@@ -145,32 +132,30 @@ function generaMembri(membri, teamContainer) {
             <h3>${membriItem.nome}</h3>
             <p>${membriItem.ruolo}</p>
             </div>
-          </div>
-        </div>
-      </div>`;
+          </div>`;
     }
 }
 
 // 3 a)
 /* FUNZIONE STAMPAGGIO NUOVI MEMBRI */
- function generazioneNuoviMembri(nuoviMembri, teamContainer) {
-    for(let i = 0; i < nuoviMembri.length; i++) {
-    teamContainer.innerHTML +=`
-    <div class="team-card">
-    <div class="card-image">
-    <img
-     src="${nuoviMembri[i].foto}"
-      
-      />
-    </div>
-    <div class="card-text">
-    <h3>${nuoviMembri[i].nome}</h3>
-    <p>${nuoviMembri[i].ruolo}</p>
-    </div>
-  </div>
-</div>
-</div>`;
+ function generazioneNuoviMembri(name, role, image) {
+
+    const nuoviMembriTeam = {
+
+        // (.value) serve fargli leggere cosa scriviamo all'interno degli imput
+       nome: name.value, 
+       ruolo: role.value,
+       immagine: image.value,  
+     };
+       /* questa sezione serve per pulire i campi e non lasciarli con le cose che abbiamo scritto noi */
+     name.value = '';    
+     role.value = '';
+     image.value = '';
+
+     return nuoviMembriTeam;
+
     }
-} 
+   
+
 
 
